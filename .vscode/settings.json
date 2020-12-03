@@ -1,0 +1,8 @@
+{
+    "editor.fontFamily": "'Input Mono', 'monospace'",
+    "workbench.colorTheme": "Ayu Dark Bordered",
+    "emmet.includeLanguages": {
+        "twig": "html"
+    },
+    "editor.wordWrap": "on"
+}

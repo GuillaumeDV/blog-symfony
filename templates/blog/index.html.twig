@@ -5,36 +5,17 @@
 {% block body %}
 <section class="articles">
 
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 18.09.2020 dans la categorie politique</div>
-        <div class="content">
-            <img src="http://placehold.it/250x150" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolorum voluptatum nam ducimus totam. Nihil.</p>
-            <p>Deleniti odio maiores ut, quod ipsam blanditiis sunt laudantium eaque laboriosam exercitationem sint similique cupiditate.</p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 18.09.2020 dans la categorie politique</div>
-        <div class="content">
-            <img src="http://placehold.it/250x150" alt="">
-            <p>Aliquid enim quo omnis corporis, porro dolor iste, ratione, quibusdam vel id earum animi sit.</p>
-            <p>Accusantium, esse? Ab quos, quibusdam sunt eos architecto quod cum excepturi reprehenderit doloremque ducimus impedit.</p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
-    <article>
-        <h2>Titre de l'article</h2>
-        <div class="metadata">Ecrit le 18.09.2020 dans la categorie politique</div>
-        <div class="content">
-            <img src="http://placehold.it/250x150" alt="">
-            <p>Laboriosam ipsum nulla necessitatibus facere? Dolores porro voluptatem ipsa aspernatur fugit minima doloribus, recusandae esse?</p>
-            <p>Consequatur quaerat possimus, unde recusandae dolore modi dignissimos perspiciatis voluptatum. Eligendi vero ipsum nihil facilis!</p>
-            <a href="{{ path('blog_show')}}" class="btn btn-primary">Lire la suite</a>
-        </div>
-    </article>
+    {% for article in articles %}
+        <article>
+            <h2>{{ article.title }}</h2>
+            <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la categorie politique</div>
+            <div class="content">
+                <img src="{{ article.image }}" alt="">
+                {{ article.content | raw }}
+                <a href="{{ path('blog_show', {'id': article.id}) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </article>
+    {% endfor %}
 
 </section>
 {% endblock %}

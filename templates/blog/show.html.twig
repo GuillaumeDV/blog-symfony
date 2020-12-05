@@ -15,6 +15,23 @@
     </article>
 
     <section id="commentaire">
+        {% if app.user %}
+            <h2>Commenter :</h2>
+
+            {{ form_start(commentForm) }}
+            {{ form_row(commentForm.author, {'attr': {'placeholder': "votre nom"}}) }}
+            {{ form_row(commentForm.content, {'attr': {'placeholder': "commentaire"}}) }}
+            
+            <button type="submit" class="btn btn-success">commenter !</button>
+
+            {{ form_end(commentForm) }}
+        {% else %}
+            <h3>Inscrivez vous ou connectez vous pour commenter !</h3>
+            <a href="{{ path('security_login')}}" class="btn btn-primary">
+                Connexion
+            </a>
+        {% endif %}
+        <h2>{{ article.comments | length }} Commentaire(s) : </h2>
         {% for comment in article.comments %}
             <div class="comment">
                 <div class="row">
